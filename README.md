@@ -24,12 +24,14 @@ Indeed, it is one of the most important factors which decide that these websites
 As we can see that the input image read by OpenCV is being shown as a BGR (Blue-Green-Red) image so we need to convert it to the RGB (Red-Green-Blue).
 
 
-
-
-![](https://cdn2.stylecraze.com/wp-content/uploads/2013/06/nanako-matsushima.jpg)![](https://i.pinimg.com/564x/fc/48/af/fc48af3dc61155d0382f5d095694c585.jpg)
-![](https://i.pinimg.com/originals/bf/17/05/bf170507466915c157bed4fbd6c59a78.jpg)![](https://nypost.com/wp-content/uploads/sites/2/2020/12/yael-most-beautiful-video.jpg)
-![](https://s.yimg.com/ny/api/res/1.2/6fh8dX7HxCqWj0fCxMIKfQ--/YXBwaWQ9aGlnaGxhbmRlcjtoPTY2Ng--/https://s.yimg.com/cd/resizer/2.0/original/-Q7ql8v_Hy83ubHz_N1KOxjFLbo)![](https://i.pinimg.com/564x/57/14/96/571496d0e562669c7e3b39373cc3b4af.jpg)
-
+<div style="display:flex;">
+    <img style='object-fit: cover; width: 16.6%' src="https://cdn2.stylecraze.com/wp-content/uploads/2013/06/nanako-matsushima.jpg">
+    <img style='object-fit: cover; width: 16.6%' src="https://i.pinimg.com/564x/fc/48/af/fc48af3dc61155d0382f5d095694c585.jpg">
+    <img style='object-fit: cover; width: 16.6%' src="https://i.pinimg.com/originals/bf/17/05/bf170507466915c157bed4fbd6c59a78.jpg">
+    <img style='object-fit: cover; width: 16.6%' src="https://nypost.com/wp-content/uploads/sites/2/2020/12/yael-most-beautiful-video.jpg">
+    <img style='object-fit: cover; width: 16.6%' src="https://s.yimg.com/ny/api/res/1.2/6fh8dX7HxCqWj0fCxMIKfQ--/YXBwaWQ9aGlnaGxhbmRlcjtoPTY2Ng--/https://s.yimg.com/cd/resizer/2.0/original/-Q7ql8v_Hy83ubHz_N1KOxjFLbo">
+    <img style='object-fit: cover; width: 16.6%' src="https://i.pinimg.com/564x/57/14/96/571496d0e562669c7e3b39373cc3b4af.jpg">
+</div>
 
 ### 2. Detecting edges of image
 - Detect the edges in the image using adaptive thresholding methods.
@@ -43,8 +45,15 @@ def edge_detect(img):
     edges = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 9, 9)
     return edges
 ```
-
-![](images\egde_1.png)![](images\egde_2.png)![](images\egde_3.png)![](images\egde_4.png)
+<hr/>
+<div align='center' style="display:flex;">
+    <img  style='object-fit: cover; width: 25%' src="images\egde_1.png">
+    <img  style='object-fit: cover; width: 25%' src="images\egde_2.png">
+    <img  style='object-fit: cover; width: 25%' src="images\egde_3.png">
+    <img  style='object-fit: cover; width: 25%' src="images\egde_4.png">
+    
+</div>
+<hr/>
 
 #### a. Definition of Adaptive Threshold
 
@@ -90,20 +99,20 @@ def cartoonize(img, edge):
 In the above demonstration, we converted a normal image into a cartoon by implementing a few lines of code using computer vision techniques. we shall have great fun using computer vision techniques.
 
 <div align='center' style="display:flex;">
-    <img  style='object-fit: cover; width: 24vw' src="images/content_1.png">
-    <img  style='object-fit: cover; width: 24vw' src="images/cartoon_1.png">
-    <img  style='object-fit: cover; width: 24vw' src="images/content_2.png">
-    <img  style='object-fit: cover; width: 24vw' src="images/cartoon_2.png">
+    <img  style='object-fit: cover; width: 25%' src="images/content_1.png">
+    <img  style='object-fit: cover; width: 25%' src="images/cartoon_1.png">
+    <img  style='object-fit: cover; width: 25%' src="images/content_2.png">
+    <img  style='object-fit: cover; width: 25%' src="images/cartoon_2.png">
     
 </div>
 <hr/>
 <div align='center' style="display:flex;">
-    <img  style='object-fit: cover; width: 24vw' src="images/content_3.png">
-    <img  style='object-fit: cover; width: 24vw' src="images/cartoon_3.png">
-    <img  style='object-fit: cover; width: 24vw' src="https://s.yimg.com/ny/api/res/1.2/6fh8dX7HxCqWj0fCxMIKfQ--/YXBwaWQ9aGlnaGxhbmRlcjtoPTY2Ng--/https://s.yimg.com/cd/resizer/2.0/original/-Q7ql8v_Hy83ubHz_N1KOxjFLbo">
-    <img  style='object-fit: cover; width: 24vw' src="images/cartoon_4.png">
+    <img  style='object-fit: cover; width: 25%' src="images/content_3.png">
+    <img  style='object-fit: cover; width: 25%' src="images/cartoon_3.png">
+    <img  style='object-fit: cover; width: 25%' src="https://s.yimg.com/ny/api/res/1.2/6fh8dX7HxCqWj0fCxMIKfQ--/YXBwaWQ9aGlnaGxhbmRlcjtoPTY2Ng--/https://s.yimg.com/cd/resizer/2.0/original/-Q7ql8v_Hy83ubHz_N1KOxjFLbo">
+    <img  style='object-fit: cover; width: 25%' src="images/cartoon_4.png">
 </div>
-
+<hr/>
 
 ## III. Converting Image to Cartoon Using Style-Transfering Deep Learning method
 
@@ -203,9 +212,11 @@ def style_content_loss(outputs):
 
 > This is the cost of computing the total cost of content loss and style loss. However, this can cause a unwanted effect which is the generated image is so noisy. For example : 
 
-<img src='https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/156207808_881688992499009_6405841816484116173_o.jpg?_nc_cat=101&ccb=1-3&_nc_sid=730e14&_nc_ohc=80RISh5ka8AAX--gG_r&_nc_ht=scontent.fvca1-2.fna&oh=d37549bab134547fa12ea69ccfb6e96f&oe=606F62E4' width="100%">
+<hr/>
 
 <img src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/158108948_883421769162398_1460545039346405371_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=730e14&_nc_ohc=Kvcf_m4l1rAAX-JAFwg&_nc_ht=scontent.fvca1-2.fna&oh=7d54d7bf057a862557cc089ea35d8c41&oe=6070B3E5" width="100%">
+
+<hr/>
 
 > Therefore, we have to reduce the cost of image variation to get a better genereated image.
 
@@ -440,95 +451,95 @@ for style_image in style_images:
 - The content image :
 <hr/>
 <div align='center' style="display:flex;">
-    <img  style='object-fit: cover; width: 25vw' src="images/Content_1.png">
-    <img  style='object-fit: cover; width: 25vw' src="images/Content_2.png">
-    <img  style='object-fit: cover; width: 25vw' src="images/Content_3.png">
-    <img  style='object-fit: cover; width: 25vw' src="images/Content_4.png">
+    <img  style='object-fit: cover; width: 25%' src="images/Content_1.png">
+    <img  style='object-fit: cover; width: 25%' src="images/Content_2.png">
+    <img  style='object-fit: cover; width: 25%' src="images/Content_3.png">
+    <img  style='object-fit: cover; width: 25%' src="images/Content_4.png">
 </div>
 <hr/>
 - The style images :
 <hr/>
 
 <div style="display:flex;">
-        <img style='object-fit: cover; width: 25vw' src="images/Style_1.png">
-        <img style='object-fit: cover; width: 25vw' src="images/Style_2.png">
-        <img style='object-fit: cover; width: 25vw' src="images/Style_3.png">
-        <img style='object-fit: cover; width: 25vw' src="images/Style_4.png">
+        <img style='object-fit: cover; width: 25%' src="images/Style_1.png">
+        <img style='object-fit: cover; width: 25%' src="images/Style_2.png">
+        <img style='object-fit: cover; width: 25%' src="images/Style_3.png">
+        <img style='object-fit: cover; width: 25%' src="images/Style_4.png">
 </div>
 
 <hr/>
 - The result images :
 <hr/>
 <div style="display:flex;">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_1.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_1.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_1.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_2.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_1.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_5.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_1.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_1.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_1.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_2.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_1.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_5.png">
 </div>
 
 <div style="display:flex;">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_3.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_1.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_9.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_4.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_1.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_13.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_3.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_1.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_9.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_4.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_1.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_13.png">
 </div>
 <hr/>
 <div style="display:flex;">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_1.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_2.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_2.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_2.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_2.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_6.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_1.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_2.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_2.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_2.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_2.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_6.png">
 </div>
 
 <div style="display:flex;">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_3.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_2.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_10.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_4.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_2.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_14.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_3.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_2.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_10.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_4.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_2.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_14.png">
 </div>
 <hr/>
 <div style="display:flex;">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_1.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_3.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_3.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_2.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_3.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_7.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_1.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_3.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_3.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_2.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_3.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_7.png">
 </div>
 
 <div style="display:flex;">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_3.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_3.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_11.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_4.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_3.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_15.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_3.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_3.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_11.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_4.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_3.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_15.png">
 </div>
 <hr/>
 <div style="display:flex;">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_1.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_4.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_4.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_2.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_4.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_8.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_1.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_4.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_4.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_2.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_4.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_8.png">
 </div>
 
 <div style="display:flex;">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_3.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_4.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_12.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Style_4.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Content_4.png">
-    <img style='object-fit: cover; width: 16vw' src="images/Result_16.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_3.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_4.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_12.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Style_4.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Content_4.png">
+    <img style='object-fit: cover; width: 16.6%' src="images/Result_16.png">
 </div>
 <hr/>
 
