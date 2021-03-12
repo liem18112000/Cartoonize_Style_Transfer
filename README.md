@@ -583,9 +583,9 @@ Comming Soon
 
 ### 3. GitHub of entire research
 
-[Github Page](https://github.com/liem18112000/ComputerVistion_Colab.git)
+[Github Page](https://github.com/liem18112000/Cartoonize_Style_Transfer.git)
 
-[Github SSH](git@github.com:liem18112000/ComputerVistion_Colab.git)
+[Github SSH](git@github.com:liem18112000/Cartoonize_Style_Transfer.git)
 
 
 ## VIII. References
