@@ -1,5 +1,6 @@
 from utils.image import ImageUtils as Loader
 from strategy.strategy import Strategy
+import matplotlib.pyplot as plt 
 
 class CartoonizeInterface(object):
 
