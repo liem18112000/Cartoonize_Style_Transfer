@@ -59,11 +59,11 @@ class Cartoonize(CartoonizeInterface):
         else:
             print("loader is not compatible with Loader::class")
 
-    def show_cartoonize_images(self, save = True):
+    def show_cartoonize_images(self, save_dir = None):
         result_images = self.cartoonize()
         for index, result_image in enumerate(result_images):
             plt.subplot(1, len(result_images), index + 1)
             imshow(result_image, 'Result Image ' + str(index + 1))
-            if save:
-                file_name = '\cartoonize\Result_' + str(index + 1) + '.png'
+            if save_dir is not None:
+                file_name = save_dir + '/result_' + str(index + 1) + '.png'
                 tensor_to_image(result_image).save(file_name)
