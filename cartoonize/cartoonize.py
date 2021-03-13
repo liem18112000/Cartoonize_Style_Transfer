@@ -67,4 +67,4 @@ class Cartoonize(CartoonizeInterface):
             self._loader.imshow(result_image, 'Result Image ' + str(index + 1))
             if save_dir is not None:
                 file_name = save_dir + '/result_' + str(index + 1) + '.png'
-                self._loader.tensor_to_image(result_image).save(file_name)
+                tensor_to_image(result_image).save(file_name)
