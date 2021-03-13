@@ -62,4 +62,4 @@ class Cartoonize(CartoonizeInterface):
     def show_cartoonize_images(self):
         result_images = self.cartoonize()
         for index, result_image in enumerate(result_images):
-            imshow(result_image, 'Result Image ' + str(index + 1))
+            self._loader.imshow(result_image, 'Result Image ' + str(index + 1))
