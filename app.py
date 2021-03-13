@@ -41,4 +41,4 @@ def app():
 
     tool.show_cartoonize_images(save_dir = args.save_dir)
 
-test()
+app()
