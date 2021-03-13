@@ -19,11 +19,11 @@ def app():
 
     style_links = [
         "https://blogphotoshop.com/wp-content/uploads/2019/03/nhung-hinh-anh-anime-nu-dep-nhat-2.jpg",
-        # "https://i.pinimg.com/originals/79/b5/da/79b5da63f1c2cb9ce94e3801621ebb60.png",
-        # "https://i.pinimg.com/736x/2c/cc/25/2ccc2516f0e795a1f504ce54872c4f73.jpg",
-        # "https://media.overstockart.com/optimized/cache/data/product_images/VG485-1000x1000.jpg",
-        # "https://i.pinimg.com/originals/88/8a/a9/888aa921251ebd4de7a4833b715dee33.jpg",
-        # "https://i.pinimg.com/originals/8e/f8/0c/8ef80cdca4b6469c34e2645177c65929.jpg"
+        "https://i.pinimg.com/originals/79/b5/da/79b5da63f1c2cb9ce94e3801621ebb60.png",
+        "https://i.pinimg.com/736x/2c/cc/25/2ccc2516f0e795a1f504ce54872c4f73.jpg",
+        "https://media.overstockart.com/optimized/cache/data/product_images/VG485-1000x1000.jpg",
+        "https://i.pinimg.com/originals/88/8a/a9/888aa921251ebd4de7a4833b715dee33.jpg",
+        "https://i.pinimg.com/originals/8e/f8/0c/8ef80cdca4b6469c34e2645177c65929.jpg"
     ]
 
     tool = Cartoonize(
