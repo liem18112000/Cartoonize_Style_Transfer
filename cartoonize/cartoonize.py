@@ -65,5 +65,5 @@ class Cartoonize(CartoonizeInterface):
             plt.subplot(1, len(result_images), index + 1)
             imshow(result_image, 'Result Image ' + str(index + 1))
             if save:
-                file_name = 'Result_' + str(index + 1) + '.png'
+                file_name = '\cartoonize\Result_' + str(index + 1) + '.png'
                 tensor_to_image(result_image).save(file_name)
