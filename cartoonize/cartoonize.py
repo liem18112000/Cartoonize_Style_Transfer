@@ -1,5 +1,5 @@
 from utils.image import ImageUtils as Loader
-from strategy.strategy import Strategy
+from strategy.strategy import Strategy, tensor_to_image
 import matplotlib.pyplot as plt 
 
 class CartoonizeInterface(object):
@@ -67,4 +67,4 @@ class Cartoonize(CartoonizeInterface):
             self._loader.imshow(result_image, 'Result Image ' + str(index + 1))
             if save_dir is not None:
                 file_name = save_dir + '/result_' + str(index + 1) + '.png'
-                tensor_to_image(result_image).save(file_name)
+                self._loader.tensor_to_image(result_image).save(file_name)
