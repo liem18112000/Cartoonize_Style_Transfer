@@ -64,7 +64,7 @@ class Cartoonize(CartoonizeInterface):
         result_images = self.cartoonize()
         for index, result_image in enumerate(result_images):
             plt.subplot(1, len(result_images), index + 1)
-            imshow(result_image, 'Result Image ' + str(index + 1))
+            self._loader.imshow(result_image, 'Result Image ' + str(index + 1))
             if save_dir is not None:
                 file_name = save_dir + '/result_' + str(index + 1) + '.png'
                 tensor_to_image(result_image).save(file_name)
