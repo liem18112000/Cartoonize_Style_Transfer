@@ -26,6 +26,9 @@ class Loader(object):
     def load_content_style_images(self, content_links, style_links, show_images=False):
         pass
 
+    def save_img(self, img, filename):
+        pass
+
 class ImageProcessingUtils(Loader):
 
     def load_img(self, url):
@@ -67,6 +70,10 @@ class ImageProcessingUtils(Loader):
             self.show_all_images(content_images)
 
         return (content_images, []), ([], [])
+
+    def save_img(self, img, filename):
+        print("Saving Image : " + filename)
+        cv2.imwrite(filename, img)
 
 class ImageUtils(Loader):
 
@@ -128,4 +135,15 @@ class ImageUtils(Loader):
                 # titles[i]
             )
 
+    def save_img(self, img, filename):
+        print("Saving Image : " + filename)
+        tensor_to_image(img).save(filename)
 
+
+def tensor_to_image(tensor):
+    tensor = tensor*255
+    tensor = np.array(tensor, dtype=np.uint8)
+    if np.ndim(tensor) > 3:
+        assert tensor.shape[0] == 1
+        tensor = tensor[0]
+    return PIL.Image.fromarray(tensor)
