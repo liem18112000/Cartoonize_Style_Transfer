@@ -9,11 +9,12 @@ import IPython.display as display
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 
+import cv2
+
 class Strategy(object):
     
     def cartoonize(self, content, style):
         pass
-
 
 class StyleTransferStrategy(Strategy):
 
@@ -89,7 +90,6 @@ class StyleContentModel(tf.keras.models.Model):
 
         return {'content': content_dict, 'style': style_dict}
 
-
 class Custom_Train(object):
     def __init__(self, image, optimizer, targets, loss_weight, extractor, num_layer):
         self._image = image
@@ -119,7 +119,6 @@ class Custom_Train(object):
 def clip_0_1(image):
     return tf.clip_by_value(image, clip_value_min=0.0, clip_value_max=1.0)
 
-
 """## Model Utils"""
 
 def vgg_layers(vgg, layer_names):
@@ -134,7 +133,6 @@ def gram_matrix(input_tensor):
     input_shape = tf.shape(input_tensor)
     num_locations = tf.cast(input_shape[1]*input_shape[2], tf.float32)
     return result/(num_locations)
-
 
 def style_content_loss(outputs, style_targets, content_targets, style_weight, content_weight, num_content_layers, num_style_layers):
     style_outputs = outputs['style']
@@ -172,7 +170,6 @@ def image_style_tranfer(image, train_parameters, epochs=10, steps_per_epoch=100)
     end = time.time()
     print("Total time: {:.1f}".format(end-start))
 
-
 def tensor_to_image(tensor):
     tensor = tensor*255
     tensor = np.array(tensor, dtype=np.uint8)
@@ -180,3 +177,55 @@ def tensor_to_image(tensor):
         assert tensor.shape[0] == 1
         tensor = tensor[0]
     return PIL.Image.fromarray(tensor)
+
+
+class ImageProcessingStrategy(Strategy):
+
+    def edge_detect(self, img):
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        gray = cv2.medianBlur(gray, 5)
+        edges = cv2.adaptiveThreshold(
+            gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 9, 9)
+        return edges
+
+    def image_process(self, img, edge):
+        color = cv2.bilateralFilter(img, 9, 250, 250)
+        cartoon = cv2.bitwise_and(color, color, mask=edge)
+        return cartoon
+
+    def cartoonize(self, images, style = None):
+        result_images = []
+        for img in images[0]:
+            edge = self.edge_detect(img)
+            result_images.append(self.image_process(img, edge))
+        return result_images
+
+class Proxy(Strategy):
+    def __init__(self, name = None):
+        self._instance_name = name
+        self._instance = None
+
+    def setInstanceName(self, name):
+        self._instance_name = str(name)
+
+    def initRealInstance(self):
+        print("Start lazy loading throung a proxy .....")
+        if self._instance_name == 'Image_Processing':
+            self._instance = ImageProcessingStrategy()
+            return True
+        elif self._instance_name == 'Style_Transfer':
+            self._instance = StyleTransferStrategy()
+            return True
+        else:
+            print(self._instance_name + " is not implemented in proxy")
+            return False
+
+    def cartoonize(self, images, style):
+        if(self.initRealInstance()):
+            return self._instance.cartoonize(images, style)
+        else:
+            print("Cartoonize fail")
+            return []
+
+    def getInstanceName(self):
+        return self._instance_name

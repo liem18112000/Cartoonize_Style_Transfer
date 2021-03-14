@@ -1,3 +1,5 @@
+from urllib.request import urlopen
+import cv2
 import functools
 import time
 import PIL.Image
@@ -10,11 +12,63 @@ import matplotlib as mpl
 mpl.rcParams['figure.figsize'] = (24, 24)
 mpl.rcParams['axes.grid'] = False
 
+class Loader(object):
 
+    def load_img(self, url):
+        pass
 
+    def imshow(self, image, title=None):
+        pass
 
+    def load_images_from_link(self, image_links):
+        pass
 
-class ImageUtils(object):
+    def load_content_style_images(self, content_links, style_links, show_images=False):
+        pass
+
+class ImageProcessingUtils(Loader):
+
+    def load_img(self, url):
+        resp = urlopen(url)
+        image = np.asarray(bytearray(resp.read()), dtype="uint8")
+        image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+        return image
+
+    def imshow(self, image, title=None):
+        plt.imshow(image)
+        if title:
+            plt.title(title)
+
+    def show_all_images(self, images, titles=[]):
+        plot_len = len(images)
+        for i in range(plot_len):
+            plt.subplot(1, plot_len, i + 1)
+            self.imshow(
+                images[i]
+                # titles[i]
+            )
+
+    def load_images_from_link(self, image_links):
+        images = []
+
+        for index, link in enumerate(image_links):
+            # download the image URL and display it
+            print("downloading (" + str(index) + ") : " + str(link))
+            images.append(self.load_img(link))
+
+        return images
+
+    def load_content_style_images(self, content_links, style_links, show_images=False):
+
+        content_images = self.load_images_from_link(content_links)
+
+        if show_images:
+            print("Content Images : ")
+            self.show_all_images(content_images)
+
+        return (content_images, []), ([], [])
+
+class ImageUtils(Loader):
 
     def load_img(self, path_to_img, max_dim=512):
         img = tf.io.read_file(path_to_img)
@@ -73,4 +127,5 @@ class ImageUtils(object):
                 images[i]
                 # titles[i]
             )
+
 

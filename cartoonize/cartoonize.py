@@ -1,4 +1,4 @@
-from utils.image import ImageUtils as Loader
+from utils.image import Loader
 from strategy.strategy import Strategy, tensor_to_image
 import matplotlib.pyplot as plt 
 
@@ -35,6 +35,7 @@ class Cartoonize(CartoonizeInterface):
             print("loader is not found")
             return
 
+        print("loading content style images ......")
         self._content, self._style = self._loader.load_content_style_images(links[0], links[1], show)
 
     def cartoonize(self):
@@ -45,6 +46,8 @@ class Cartoonize(CartoonizeInterface):
         if self._content is None or self._style is None:
             print("Content image and style image are not loaded")
             return 
+
+        print("Starting cartoonize images .....")
 
         return self._strategy.cartoonize(self._content, self._style)
 
